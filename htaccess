@@ -1,0 +1,18 @@
+#Replace file_name with your subfolder name
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /folder_name
+RewriteCond %{REQUEST_URI} !^/folder_name/
+RewriteRule ^(.*)$ /folder_name/$1
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /folder_name/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /folder_name/index.php [L]
+</IfModule>
+
+# END WordPress
